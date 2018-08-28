@@ -4,4 +4,4 @@ channels:
   - conda-forge
 dependencies:
   - notebook
-  - xeus-cling=0.4.6
+  - xeus-cling=0.4.5
