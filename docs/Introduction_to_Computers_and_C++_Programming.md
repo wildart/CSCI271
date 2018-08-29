@@ -124,9 +124,9 @@ C programs typically go through six phases to be executed:
 - execute
   - The computer, under the control of its CPU, executes the program one instruction at a time.
 
-![flow](img/flow.png)
+![flow](../img/flow.png)
 
-![flow2](img/flow2.png)
+![flow2](../img/flow2.png)
 
 ### C++
 
