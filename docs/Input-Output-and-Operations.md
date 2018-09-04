@@ -17,6 +17,18 @@ int main()
 } // end function main
 ```
 
+    [1minput_line_12:2:5: [0m[0;1;31merror: [0m[1mredefinition of 'main'[0m
+    int main()
+    [0;1;32m    ^
+    [0m[1minput_line_10:2:5: [0m[0;1;30mnote: [0mprevious definition is here[0m
+    int main()
+    [0;1;32m    ^
+    [0m
+
+
+    Interpreter Error: 
+
+
 Edit and run to above program: https://coliru.stacked-crooked.com/a/0ddabf5f1e1e0792
 
 ### Comments
@@ -166,6 +178,15 @@ int main() {
 } // end function main 
 ```
 
+    [1minput_line_17:4:12: [0m[0;1;31merror: [0m[1mfunction definition is not allowed here[0m
+    int main() {
+    [0;1;32m           ^
+    [0m
+
+
+    Interpreter Error: 
+
+
 ## Variables
 
 - Declarations introduce identifiers into programs.
@@ -218,6 +239,54 @@ of cube (cm)  of cube (cm^2)  of cube (cm^3)
 3             9               27 
 4             16              64
 ```
+
+## Data Types
+
+- **Primitive Data Types**: Built-in or predefined data types and can be used directly by the user to declare variables. example: int, char , float, bool etc. Primitive data types available in C++ are:
+
+  - int - Integer
+  - char - Character
+  - bool - Boolean
+  - float - Floating Point
+  - double - Double Floating Point
+  - void - Valueless or Void
+
+- **Abstract or user defined data type**: These data types are defined by user itself. Like, defining a class in C++ or a structure.
+
+- **Datatype Modifiers** are used with the built-in data types to modify the length of data that a particular data type can hold.
+
+  - signed
+  - unsigned
+  - short
+  - long
+
+
+
+```c++
+#include<iostream>
+using namespace std;
+
+cout << "Size of char : " << sizeof(char) << " byte" << endl;
+cout << "Size of int : " << sizeof(int) << " bytes" << endl;
+cout << "Size of short int : " << sizeof(short int) << " bytes" << endl;
+cout << "Size of long int : " << sizeof(long int) << " bytes" << endl;
+cout << "Size of signed long int : " << sizeof(signed long int) << " bytes" << endl;
+cout << "Size of unsigned long int : " << sizeof(unsigned long int) << " bytes" << endl;
+cout << "Size of float : " << sizeof(float) << " bytes" <<endl;
+cout << "Size of double : " << sizeof(double) << " bytes" << endl;
+cout << "Size of wchar_t : " << sizeof(wchar_t) << " bytes" <<endl;
+```
+
+    Size of char : 1 byte
+    Size of int : 4 bytes
+    Size of short int : 2 bytes
+    Size of long int : 8 bytes
+    Size of signed long int : 8 bytes
+    Size of unsigned long int : 8 bytes
+    Size of float : 4 bytes
+    Size of double : 8 bytes
+    Size of wchar_t : 4 bytes
+
 
 ## Advanced Stream Usage
 

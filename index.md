@@ -4,6 +4,7 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 
 - [Introduction to Computers & C++ Programming](docs/Introduction_to_Computers_and_C++_Programming.md)
 - [Input/Output and Operations](docs/Input-Output-and-Operations.md)
+- [Introduction to Classes](docs/Introduction-to-Classes.md)
 
 ## Compilers & IDEs
 
@@ -12,7 +13,7 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 - [CodeLite](https://codelite.org/)
 - Cygwin: Follow first three installation steps of [this instruction](https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/cygwin/)
 
-## Command Line Command
+## Command Line Commands
 
 [Linux/MacOS/Cygwin](https://ss64.com/bash/)
 
