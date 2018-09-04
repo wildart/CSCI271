@@ -152,14 +152,14 @@ using namespace std; // program uses names from the std namespace
 // function main begins program execution
 int main() {
     int number1 = 0; // first integer to sum
-    int bumber2{0}; // second integer to sum
+    int number2{0}; // second integer to sum
     int result{0}; // the sum of the two integers
 
     cout << "Enter first integer: "; // prompt user for data
-    cin >> number1; // read first integers from user
+    cin >> number1; // read first integer from user input
    
     cout << "Enter second integer: "; // prompt user for data
-    cin >> number2; // read first integers from user
+    cin >> number2; // read second integer from user input
     
     result = number1 + number2; // sum the two integers; store result
     cout << "The sum is " << result << endl; // print result; end line
@@ -317,3 +317,114 @@ std::cout << std::hex << 10 << std::endl;
 
 
 More example of stream library use in here: https://andersy005.github.io/blog/2018/01/20/play-interactively-with-cpp-streams/
+
+## Conditional Statement
+
+The **if statement (conditional statement)** allows a program to take alternative action based on whether a condition is **true or false**.
+- If the condition is true, the statement in the body of the if statement is executed.
+- If the condition is false, the body statement is not executed.
+
+```c
+if (logical-condition)
+{
+// statements are executed if the condition is true
+}
+else
+{
+// statements are executed if the condition is false
+}
+```
+
+Conditions in *if* statements can be formed by using the equality operators and relational operators.
+- The relational operators all have the same level of precedence and associate left to right.
+- The equality operators both have the same level of precedence, which is lower than that of the relational operators, and associate left to right.
+
+*else* part of the conditional statement is optional, so the following code is valid.
+```c
+if (logical-condition)
+{
+// statements are executed if the condition is true
+}
+```
+
+Tips
+
+- Indent the statement(s) in the body of an if statement to enhance readability.
+
+## Equality and Relational Operators
+
+![relational operators](../img/relational_operators.png)
+
+## Comparing integers
+
+
+```c++
+// Comparing integers using if statements, relational operators
+// and equality operators.
+#include <iostream> // enables program to perform input and output
+
+using std::cout; // program uses cout
+using std::cin; // program uses cin
+using std::endl; // program uses endl
+
+// function main begins program execution
+int main() {
+   int number1{0}; // first integer to compare (initialized to 0)
+   int number2{0}; // second integer to compare (initialized to 0)
+   
+   cout << "Enter two integers to compare: "; // prompt user for data
+   cin >> number1 >> number2; // read two integers from user
+
+   if (number1 == number2) {
+      cout << number1 << " == " << number2 << endl;
+   }
+
+   if (number1 != number2) {
+      cout << number1 << " != " << number2 << endl;
+   }
+
+   if (number1 < number2) {
+      cout << number1 << " < " << number2 << endl;
+   }
+
+   if (number1 > number2) {
+      cout << number1 << " > " << number2 << endl;
+   }
+
+   if (number1 <= number2) {
+      cout << number1 << " <= " << number2 << endl;
+   }
+
+   if (number1 >= number2) {
+      cout << number1 << " >= " << number2 << endl;
+   }
+} // end function main
+```
+
+### Exersise
+
+Write a program that asks for the number of calories and fat grams in a food. The program should display the percentage of calories that come from fat. If the calories from fat are less than 30% of the total calories of the food, it should also display a message indicating that the food is low in fat.
+
+One gram of fat has 9 calories, so
+Calories_from_fat = fat_grams * 9
+
+Your program should display instructions to the user, and should check that inputs make sense, exiting with an informative error message if not.
+
+## Homework 1
+
+Write a program that inputs the starting balance, the amount deposited, the number of checks, and the total value of all of the checks, and computes the monthly service fee for a checking account according to the following schedule:
+
+- \\$15 if the balance at the start of the month is less than \\$400
+- \\$15 if the balance at the end of the month is less than \\$400
+- \\$25 if the average check value is more than \\$500
+- \\$50 if the balance at the end of the month is negative
+
+In addition, there is a per-check fee which is computed as follows:
+- checks 1 - 19 in any given month cost \\$0.10 each
+- checks 20 - 39 in any given month cost \\$0.08 each
+- checks 40 - 59 in any given month cost \\$0.06 each
+- additional checks cost \\$0.04 each
+
+If the starting balance is negative, the program should exit with the statement that the account has been closed.
+
+The program should be designed for clarity and testing -- using carefully chosen variable names and displaying fees as they are incurred (along with the reason for the fee) will go most of the way to accomplishing this.
