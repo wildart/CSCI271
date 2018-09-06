@@ -37,7 +37,8 @@ where **my-user-name** is a Windows account name
 - If you see following **warning** message
 
         warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
-add the option `-std=c++11` to the compiler call as follows:
+
+  - add the option `-std=c++11` to the compiler call as follows:
 
         g++ first.cpp -std=c++11 -o first
 
