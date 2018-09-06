@@ -6,6 +6,10 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 - [Input/Output and Operations](docs/Input-Output-and-Operations.md)
 - [Introduction to Classes](docs/Introduction-to-Classes.md)
 
+## Lab instructions
+
+These [lab instructions](docs/First-lab-instructions.md) show how to compile your first program using GCC/Cygwin C++ compiler in Windows OS.
+
 ## Compilers & IDEs
 
 - [CodeBlocks](http://www.codeblocks.org/)
