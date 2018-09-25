@@ -5,6 +5,7 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 - [Introduction to Computers & C++ Programming](docs/Introduction_to_Computers_and_C++_Programming.md)
 - [Input/Output and Operations](docs/Input-Output-and-Operations.md)
 - [Introduction to Classes](docs/Introduction-to-Classes.md)
+- [Control Statements](docs/Control-Statements.md)
 
 ## Lab instructions
 
