@@ -235,7 +235,7 @@ An iteration statement (also called a **looping statement** or a **loop**) allow
 - The statement contained in the While iteration statement constitutes the body of the While
 - Eventually, the condition will become false, the iteration will terminate, and the first pseudocode statement after the iteration statement will execute.
 
-### Example 
+### Example
 
 Consider a program segment that finds the first power of 3 larger than 100. When the following while iteration statement finishes executing, product contains the result.
 
@@ -282,23 +282,21 @@ A class of ten students took a quiz. The grades (integers in the range 0-100) fo
 - The class average is equal to the sum of the grades divided by the number of students.
 - The algorithm for solving this problem on a computer must input each grade, keep track of the total of all grades entered, perform the averaging calculation and print the result.
 
-
-Pseudocode:
+### Pseudocode
 
     Set total to zero
     Set grade counter to one
-    
+
     While grade counter is less than or equal to ten
         Prompt the user to enter the next grade
         Input the next grade
         Add the grade into the total
         Add one to the grade counter
-    
+
     Set the class average to the total divided by ten
     Print the class average
-    
-Program:
 
+### Program
 
 ```c++
 // Solving the class-average problem using counter-controlled iteration.
@@ -318,15 +316,125 @@ int main() {
         total = total + grade; // add grade to total
         gradeCounter = gradeCounter + 1; // increment counter by 1
     }
-    
+
     // termination phase
     int average = total / 10; // int division yields int result
-    
+
     // display total and average of grades
     cout << "\nTotal of all 10 grades is " << total;
     cout << "\nClass average is " << average << endl;
 }
 ```
+
+Notes:
+- A variable declared in a function body is a local variable and can be used only from the line of its declaration to the closing right brace of the block in which the variable is declared.
+- A local variable's declaration must appear before the variable is used; otherwise, a compilation error occurs.
+- Variable grade - declared in the body of the while loop - can be used only in that block.
+- You'll normally initialize counter variables to zero or one, depending on how they are used in an algorithm.
+
+### Lab 1
+
+Write a program that calculates the surface area and volume of cubes with face lengths of 1 to 10 cm. Write an algorithm with a counter-controlled iteration. Use tabs to print the following neatly formatted table of values:
+
+```
+Face length   Surface area    Volume
+of cube (cm)  of cube (cm^2)  of cube (cm^3)
+0             0               0
+1             1               1
+2             4               8
+.             .               .
+.             .               .
+.             .               .
+```
+
+## Algorithm with Sentinel-Controlled Iteration
+
+- **Sentinel value** (also called a **signal value**, a **dummy value** or a **flag value**) can be used for "end of data entry."
+- Sentinel-controlled iteration is often called **indefinite iteration**
+  - the number of iterations is not known in advance.
+- Sentinel value must not be an acceptable input value.
+
+### Problem
+
+A class of ten students took a quiz. The grades (integers in the range 0-100) for this quiz are available to you. Determine the class average on the quiz.
+
+### Pseudocode
+
+    Prompt the user to enter the first grade
+    Input the first grade (possibly the sentinel)
+
+    While the user has not yet entered the sentinel
+      Add this grade into the running total
+      Add one to the grade counter
+      Prompt the user to enter the next grade
+      Input the next grade (possibly the sentinel)
+
+    If the counter is not equal to zero
+      Set the average to the total divided by the counter
+      Print the average
+    else
+      Print “No grades were entered”
+
+### Program
+
+```c++
+// Solving the class-average problem using sentinel-controlled iteration.
+#include <iostream>
+#include <iomanip> // parameterized stream manipulators
+using namespace std;
+
+int main() {
+    // initialization phase
+    int total{0}; // initialize sum of grades entered by the user
+    unsigned int gradeCounter{0}; // initialize # of grades entered so far
+
+    int grade;
+    cout << "Enter grade: "; // prompt
+    cin >> grade; // input next grade
+
+    // processing phase uses counter-controlled iteration
+    while ( grade != -1 ) { // loop 10 times
+        total = total + grade; // add grade to total
+        gradeCounter = gradeCounter + 1; // increment counter by 1
+
+        cout << "Enter grade: "; // prompt
+        cin >> grade; // input next grade
+    }
+
+    // termination phase
+    // if user entered at least one grade...
+    if ( gradeCounter != 0 ) {
+        // use number with decimal point to calculate average of grades
+        double average = static_cast<double>(total) / gradeCounter;
+
+        // display total and average (with two digits of precision)
+        cout << "\nTotal of the " << gradeCounter
+             << " grades entered is " << total;
+        cout << setprecision(2) << fixed;
+        cout << "\nClass average is " << average << endl;
+    }
+    else { // no grades were entered, so output appropriate message
+        cout << "No grades were entered" << endl;
+    }
+}
+```
+
+## Converting between Fundamental Types
+
+- To perform a floating-point calculation with integers, create **temporary** floating-point values.
+- **static_cast operator** accomplishes this task
+  - The cast operator **static_cast<double>(total)** creates a **temporary** floating-point copy of its operand in parentheses.
+  - Known as explicit conversion
+  - The value stored in total is still an integer
+- The calculation now consists of a floating-point value divided by the integer *gradeCounter*.
+  - The compiler knows how to evaluate only expressions in which the operand types of are identical.
+  - Compiler performs **promotion** (also called **implicit conversion**) on selected operands.
+  - In an expression containing values of data types int and double, C++ **promotes** int operands to double values.
+- Cast operators are available for use with every data type and with class types as well.
+
+### Lab 2
+
+Write an algorithm with a sentinel-controlled iteration that calculates the surface area and volume of a cube with a face length entered by user. Repeat calculations until user enters a negative face length.
 
 ## Homework 2
 
@@ -340,3 +448,42 @@ Write a program to input N numbers and output
 which have been input.
 
 Make as few assumptions as possible about the inputs.
+
+## Algorithm with Counter-Controlled Iteration (cont.)
+
+- Counter-controlled iteration requires
+  - a **control variable** (or loop counter)
+  - the control variable's **initial value**
+  - the control variable's **increment** that's applied during each iteration of the loop
+  - the **loop-continuation condition** that determines if looping should continue.
+
+## **For** Iteration Statement
+
+The **for iteration statement** specifies the counter-controlled iteration details in a single line of code.
+
+    for (initialization; condition; increment){
+      body
+    }
+
+- The initialization occurs once when the loop is encountered.
+- The condition is tested next and each time the body completes.
+- The body executes if the condition is true.
+- The increment occurs after the body executes.
+- Then, the condition is tested again.
+
+```c++
+// Counter-controlled iteration with the for iteration statement.
+#include <iostream>
+using namespace std;
+
+int main() {
+    // for statement header includes initialization,
+    // loop-continuation condition and increment
+    for (unsigned int counter = 1; counter <= 10; ++ counter) {
+        cout << counter << " ";
+    }
+    cout << endl;
+}
+```
+
+![for](../img/for.png)
