@@ -347,6 +347,8 @@ of cube (cm)  of cube (cm^2)  of cube (cm^3)
 .             .               .
 ```
 
+![Lab 1 Solution](../progs/ave-cc.cpp)
+
 ## Algorithm with Sentinel-Controlled Iteration
 
 - **Sentinel value** (also called a **signal value**, a **dummy value** or a **flag value**) can be used for "end of data entry."
@@ -436,6 +438,8 @@ int main() {
 
 Write an algorithm with a sentinel-controlled iteration that calculates the surface area and volume of a cube with a face length entered by user. Repeat calculations until user enters a negative face length.
 
+![Lab 2 Solution](../progs/ave-sc.cpp)
+
 ## Homework 2
 
 Write a program to input N numbers and output
@@ -487,3 +491,9 @@ int main() {
 ```
 
 ![for](../img/for.png)
+
+### Lab 3
+
+Write an algorithm from [Lab 1](#lab-1) using counter-controlled loop - `for`.
+
+![Lab 3 Solution](../progs/ave-cc2.cpp)
