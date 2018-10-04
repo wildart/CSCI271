@@ -214,11 +214,9 @@ else if (studentGrade >= 60) {
     std::cout << "D";
 }
 else {
-    std::cout << "F";  
+    std::cout << "F";
 }
 ```
-
-    B
 
 ## while Iteration Statement
 
@@ -475,6 +473,14 @@ The **for iteration statement** specifies the counter-controlled iteration detai
 - The increment occurs after the body executes.
 - Then, the condition is tested again.
 
+In most cases, the **for** statement can be represented by an equivalent **while** statement, as follows:
+
+    initialization;
+    while (condition){
+      body
+      increment;
+    }
+
 ```c++
 // Counter-controlled iteration with the for iteration statement.
 #include <iostream>
@@ -483,7 +489,7 @@ using namespace std;
 int main() {
     // for statement header includes initialization,
     // loop-continuation condition and increment
-    for (unsigned int counter = 1; counter <= 10; ++ counter) {
+    for (unsigned int counter = 1; counter <= 10; ++counter) {
         cout << counter << " ";
     }
     cout << endl;
@@ -492,8 +498,225 @@ int main() {
 
 ![for](../img/for.png)
 
+Equivalent program which uses **while** loop statement:
+
+```c++
+// Counter-controlled iteration with the for iteration statement.
+#include <iostream>
+using namespace std;
+
+int main() {
+    unsigned int counter = 1; // initialization
+    while (counter <= 10) { // loop-continuation condition
+        cout << counter << " ";
+        ++ counter; // increment
+    }
+    cout << endl;
+}
+```
+
 ### Lab 3
 
 Write an algorithm from [Lab 1](#lab-1) using counter-controlled loop - `for`.
 
 [Lab 3 Solution](../progs/ave-cc2.cpp)
+
+## **Switch** Multiple-Selection Statement
+
+- The **switch** multiple-selection statement performs many different actions based on the possible values of a variable or expression.
+
+- Each action is associated with the value of an **integral constant expression** (i.e., any combination of character and integer constants that evaluates to a constant integer value).
+
+The syntax for a switch statement in C++ is following
+
+    switch(expression) {
+    case constant-expression  :
+        statement(s);
+        break; //optional
+    case constant-expression  :
+        statement(s);
+        break; //optional
+    
+    // you can have any number of case statements.
+    default : //Optional
+        statement(s);
+    }
+
+- The switch statement consists of a series of **case labels** and an optional **default case**.
+- When the flow of control reaches the `switch`, the program evaluates the **controlling expression** in the parentheses.
+- Compares the value of the controlling expression with each case label.
+- If a match occurs, the program executes the statements for that `case`.
+- The `break` statement causes program control to proceed with the first statement after the `switch`.
+- If **no** match occurs between the controlling expression's value and a `case` label, the `default` case executes.
+If no match occurs in a `switch` statement that does not contain a `default` case, program control continues with the first statement after the `switch`.
+
+![Switch](../img/switch.png)
+
+
+[Run this example](http://tpcg.io/bZM82f)
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main () {
+   // local variable declaration:
+   char grade = 'D';
+
+   switch(grade) {
+      case 'A' :
+         cout << "Excellent!" << endl;
+         break;
+      case 'B' :
+      case 'C' :
+         cout << "Well done" << endl;
+         break;
+      case 'D' :
+         cout << "You passed" << endl;
+         break;
+      case 'F' :
+         cout << "Better try again" << endl;
+         break;
+      default :
+         cout << "Invalid grade" << endl;
+   }
+   cout << "Your grade is " << grade << endl;
+
+   return 0;
+}
+```
+
+## **Break** and **Continue** Statements
+
+In addition to selection and iteration statements, C++ provides statements:
+- `break` - which we discussed in the context of the switch statement,
+- and `continue` to alter the flow of control.
+
+The **break** statement, when executed in a `while`, `for`, `do...while` or `switch` statement, causes immediate exit from that statement.
+- Program execution continues with the next statement.
+- Common uses of the break statement are to escape early from a loop or to skip the remainder of a `switch` statement.
+
+```c++
+#include <iostream>
+using namespace std;
+int main() {
+    unsigned int count; // control variable also used after loop
+    for (count = 1; count <= 10; count++) { // loop 10 times
+        if (count == 5) {
+            break; // terminates loop if count is 5
+        }
+        cout << count << " ";
+    }
+    cout << "\nBroke out of loop at count = " << count << endl;
+}
+```
+Output:
+
+    1 2 3 4
+    Broke out of loop at count = 5
+
+The **continue** statement, when executed in a `while`, `for` or `do...while` statement, skips the remaining statements in the body of that statement and proceeds with the next iteration of the loop.
+
+- In `while` and `do...while` statements, the loop-continuation test evaluates immediately after the continue statement executes.
+- In the `for` statement, the increment expression executes, then the loop-continuation test evaluates.
+
+```c++
+#include <iostream>
+using namespace std;
+int main() {
+    for (unsigned int count{1}; count <= 10; count++) { // loop 10 times
+        if (count == 5) {
+            continue; // skip remaining code in loop body if count is 5
+        }
+        cout << count << " ";
+    }
+    cout << "\nUsed continue to skip printing 5" << endl;
+}
+```
+Output:
+
+    1 2 3 4 6 7 8 9 10
+    Used continue to skip printing 5
+
+## Lab 4
+
+Consider the following problem statement:
+
+- A person invests $1000.00 in a savings account yielding 5% interest. Assuming that all interest is left on deposit in the account, calculate and print the amount of money in the account at the end of each year for 10 years. Use the following formula for determining these amounts:
+
+        a = p*(1+r)^n
+
+where
+- `p` is the original amount invested (i.e., the principal),
+- `r` is the annual interest rate,
+- `n` is the number of years and
+- `a` is the amount on deposit at the end of the nth year.
+
+This problem involves a loop that performs the indicated calculation for each of the 10 years the money remains on deposit.
+
+```c++
+// Compound-interest calculations
+#include <iostream>
+#include <iomanip>
+#include <cmath> // for pow function
+
+using namespace std;
+
+int main() {
+    // set floating-point number format
+    cout << fixed << setprecision(2);
+
+    double principal{1000.00}; // initial amount before interest
+    double rate{0.05}; // interest rate
+
+    cout << "Initial principal: " << principal << endl;
+    cout << "    Interest rate: " << rate << endl;
+
+    // display headers
+    cout << "\nYear" << setw(20) << "Amount on deposit" << endl;
+
+    // calculate amount on deposit for each of ten years
+    for (unsigned int year{1}; year <= 10; ++year) {
+        // calculate amount on deposit at the end of the specified year
+        double amount = principal * pow(1.0 + rate, year);
+        // display the year and the amount
+        cout << setw(4) << year << setw(20) << amount << endl;
+    }
+}
+```
+
+Modify the above program so it will have a function that calculates an amount on deposit given principal rate and year.
+
+**Notes:**
+
+- Stream manipulator `fixed` indicates that floating-point values should be output as fixed-point values with decimal points.
+
+- Stream manipulator `setprecision` specifies the number of digits to the right of the decimal point.
+
+    - Stream manipulators fixed and setprecision remain in effect until they’re changed - such settings are called sticky settings.
+
+- The field width specified with `setw` applies only to the next value output.
+
+## Lab 5 - Factorial & *e*
+
+The factorial of a nonnegative integer *n* is written `n!` and is defined as follows for values of *n* greater than 1:
+
+    n! = n * (n-1) * (n-2) * ... * 1
+
+and for *n* = 0 or *n* = 1:
+
+    n! = 1
+
+For example,
+
+    5! = 5 * 4 * 3 * 2 * 1 (which is 120).
+
+Use **while** statements in each of the following:
+
+- Write a program that reads a nonnegative integer and computes and prints its factorial.
+
+- Write a program that estimates the value of the mathematical constant *e* by using the formula:
+
+        e = 1 + 1/1! + 1/2! + 1/3! + ...
+
+    - Prompt the user for the desired accuracy of _e_ (i.e., the number of terms in the summation).

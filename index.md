@@ -6,6 +6,7 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 - [Input/Output and Operations](docs/Input-Output-and-Operations.md)
 - [Introduction to Classes](docs/Introduction-to-Classes.md)
 - [Control Statements](docs/Control-Statements.md)
+- [Operators](docs/Operators.md)
 
 ## Lab instructions
 
