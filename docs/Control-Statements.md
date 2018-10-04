@@ -347,7 +347,7 @@ of cube (cm)  of cube (cm^2)  of cube (cm^3)
 .             .               .
 ```
 
-![Lab 1 Solution](../progs/ave-cc.cpp)
+[Lab 1 Solution](../progs/ave-cc.cpp)
 
 ## Algorithm with Sentinel-Controlled Iteration
 
@@ -438,7 +438,7 @@ int main() {
 
 Write an algorithm with a sentinel-controlled iteration that calculates the surface area and volume of a cube with a face length entered by user. Repeat calculations until user enters a negative face length.
 
-![Lab 2 Solution](../progs/ave-sc.cpp)
+[Lab 2 Solution](../progs/ave-sc.cpp)
 
 ## Homework 2
 
@@ -496,4 +496,4 @@ int main() {
 
 Write an algorithm from [Lab 1](#lab-1) using counter-controlled loop - `for`.
 
-![Lab 3 Solution](../progs/ave-cc2.cpp)
+[Lab 3 Solution](../progs/ave-cc2.cpp)
