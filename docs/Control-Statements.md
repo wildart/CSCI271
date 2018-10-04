@@ -711,9 +711,9 @@ For example,
 
     5! = 5 * 4 * 3 * 2 * 1 (which is 120).
 
-Use **while** statements in each of the following:
+Use loop statements in each of the following:
 
-- Write a program that reads a nonnegative integer and computes and prints its factorial.
+- Write a function that reads a nonnegative integer and computes its factorial.
 
 - Write a program that estimates the value of the mathematical constant *e* by using the formula:
 
