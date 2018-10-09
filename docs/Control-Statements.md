@@ -697,6 +697,9 @@ Modify the above program so it will have a function that calculates an amount on
 
 - The field width specified with `setw` applies only to the next value output.
 
+[Lab 4 Solution](../progs/compound.cpp)
+
+
 ## Lab 5 - Factorial & *e*
 
 The factorial of a nonnegative integer *n* is written `n!` and is defined as follows for values of *n* greater than 1:
@@ -720,3 +723,5 @@ Use loop statements in each of the following:
         e = 1 + 1/1! + 1/2! + 1/3! + ...
 
     - Prompt the user for the desired accuracy of _e_ (i.e., the number of terms in the summation).
+
+[Lab 5 Solution](../progs/e.cpp)
