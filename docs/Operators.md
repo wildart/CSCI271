@@ -126,7 +126,7 @@ The `&&` (logical AND) operator is used to ensure that two conditions are both t
 - The right side of a logical AND expression is evaluated only if the left side is true.
 
 The `||` (logical OR) operator determines if either or both of two conditions are true before we choose a certain path of execution.
-- The && operator has a higher precedence than the || operator.
+- The `&&` operator has a higher precedence than the `||` operator.
 - Both operators associate from left to right.
 
 The `!` (logical negation, also called logical NOT or logical complement) operator "reverses" the meaning of a condition.
@@ -171,3 +171,7 @@ Write an application that displays a table of the Pythagorean triples for `side1
 **Hint:** Use a triple-nested `for` loop that tries all possibilities.
 
 *Note: This is an example of "brute-force" computing. You'll learn in more advanced computer-science courses that for many interesting problems there's no known algorithmic approach other than using sheer brute force.*
+
+## Homework 3
+
+[Homework 3](./Assignment3.pdf)
