@@ -8,6 +8,12 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 - [Control Statements](docs/Control-Statements.md)
 - [Operators](docs/Operators.md)
 
+## Solutions
+
+- [Assignment 1](progs/hw1.cpp)
+- [Assignment 2](progs/hw2.cpp)
+- [Assignment 3]()
+
 ## Lab instructions
 
 These [lab instructions](docs/First-lab-instructions.md) show how to compile your first program using GCC/Cygwin C++ compiler in Windows OS.
