@@ -172,6 +172,8 @@ Write an application that displays a table of the Pythagorean triples for `side1
 
 *Note: This is an example of "brute-force" computing. You'll learn in more advanced computer-science courses that for many interesting problems there's no known algorithmic approach other than using sheer brute force.*
 
+[Lab 1 Solution](../progs/triple.cpp)
+
 ## Homework 3
 
 [Homework 3](./Assignment3.pdf)
