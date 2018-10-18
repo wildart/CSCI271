@@ -22,6 +22,6 @@ int main()
     for(a=1;a<=500;++a)
         for(b=1;b<=500;++b)
             for(c=1;c<=500;++c)
-                if(a*a + b*b == c*c)
+                if(a*a + b*b == c*c && a > b)
                     std::cout << a << "^2 + " << b << "^2 = " << c << "^2\n";
 }
