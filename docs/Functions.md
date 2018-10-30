@@ -279,3 +279,91 @@ Stack Frames
 Stack Overflow
 - The amount of memory in a computer is finite, so only a certain amount of memory can be used to store activation records on the function call stack.
 - If more function calls occur than can have their activation records stored on the function call stack, an a fatal error known as stack overflow occurs.
+
+Example:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int square(int); // prototype
+
+int main() {
+    int a = 10;
+    cout << a << " squared: " << square(a) << endl;
+}
+
+int square(int x){ // x is a local variable
+    return x*x;
+}
+```
+
+First, the operating system calls `main` - this pushes an activation record onto the stack.
+- The activation record tells main how to return to the operating system (i.e., transfer to return address R1) and contains the space for main’s automatic variable (i.e., a, which is initialized to 10).
+
+![stack1](../img/fstack1.png)
+
+Function `main` - before returning to the operating system - now calls function `square`.
+- This causes a stack frame for `square` to be pushed onto the function call stack.
+- This stack frame contains the return address that square needs to return to main (i.e., R2) and the memory for square’s automatic variable (i.e., x).
+
+![stack2](../img/fstack2.png)
+
+After square calculates the square of its argument, it needs to return to `main` - and no longer needs the memory for its automatic variable x. So `square` stack frame is popped from the stack—giving square the return location in main (i.e., R2) and losing square's automatic variable.
+
+![stack3](../img/fstack3.png)
+
+## References and Reference Parameters
+
+Two ways to pass arguments to functions in many programming languages are **pass-by-value** and **pass-by-reference**.
+
+### Pass-by-Value
+
+When an argument is __passed by value__, a copy of the argument's value is made and passed (on the function call stack) to the called function.
+- Changes to the copy do not affect the original variable’s value in the caller.
+    - To specify a reference to a constant, place the `const` qualifier before the type specifier in the parameter declaration.
+
+- One disadvantage of pass-by-value is that, if a large data item is being passed, copying that data can take a considerable amount of execution time and memory space.
+
+### Pass-by-Reference
+With __pass-by-reference__, the caller gives the called function the ability to access the caller's data directly, and to modify that data.
+- A reference parameter is an alias for its corresponding argument in a function call.
+- To indicate that a function parameter is passed by reference, simply follow the parameter's type in the function prototype by an ampersand (&); use the same convention when listing the parameter’s type in the function header.
+- Pass-by-reference is good for performance reasons, because it can eliminate the pass-by-value overhead of copying large amounts of data.
+
+```c++
+// Passing arguments by value and by reference.
+#include <iostream>
+using namespace std;
+
+int squareByValue(int); // function prototype (value pass)
+void squareByReference(int&); // function prototype (reference pass)
+
+int main() {
+   int x{2}; // value to square using squareByValue
+   int z{4}; // value to square using squareByReference
+
+   // demonstrate squareByValue
+   cout << "x = " << x << " before squareByValue\n";
+   cout << "Value returned by squareByValue: "
+      << squareByValue(x) << endl;
+   cout << "x = " << x << " after squareByValue\n" << endl;
+
+   // demonstrate squareByReference
+   cout << "z = " << z << " before squareByReference" << endl;
+   squareByReference(z);
+   cout << "z = " << z << " after squareByReference" << endl;
+}
+
+// squareByValue multiplies number by itself, stores the
+// result in number and returns the new value of number
+int squareByValue(int number) {
+   return number *= number; // caller's argument not modified
+}
+
+// squareByReference multiplies numberRef by itself and stores the result
+// in the variable to which numberRef refers in function main
+void squareByReference(int& numberRef) {
+   numberRef *= numberRef; // caller's argument modified
+}
+```
