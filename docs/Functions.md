@@ -1,3 +1,5 @@
+ <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 # Functions
 
 Develop and maintain a large program by constructing it from small, simple pieces, or components.
@@ -173,6 +175,8 @@ The idea is to simulate random (x, y) points in a 2-D plane with domain as a squ
 1. Define a function which produces random number in interval [0,1]
 2. Use this function to perform evaluation of pi value
 
+[Lab 2 Solution](../progs/pi.cpp)
+
 ## Scope
 
 The portion of the program where an identifier can be used is known as its **scope**.
@@ -192,7 +196,7 @@ An identifier declared **outside** any function or class has **global namespace 
 - Function definitions, function prototypes placed outside a function, class definitions and global variables all have global namespace scope.
 - Global variables are created by placing variable declarations outside any class or function definition. Such variables retain their values throughout a program’s execution.
 
-_Note: Variables used only in a particular function should be declared as local variables in that function rather than as global variables.
+_Note: Variables used only in a particular function should be declared as local variables in that function rather than as global variables._
 
 ```c++
 // Scoping example.
@@ -259,6 +263,32 @@ void useGlobal() {
    cout << "global x is " << x << " on exiting useGlobal" << endl;
 }
 ```
+
+### Unary Scope Resolution Operator
+
+- C++ provides the **unary scope resolution operator (::)** to access a global variable when a local variable of the same name is in scope.
+- Using the unary scope resolution operator (::) with a given variable name is optional when the only variable with that name is a global variable.
+
+```c++
+// Unary scope resolution operator.
+#include <iostream>
+using namespace std;
+
+int number{7}; // global variable named number
+
+int main() {
+   double number{10.5}; // local variable named number
+
+   // display values of local and global variables
+   cout << "Local double value of number = " << number
+      << "\nGlobal int value of number = " << ::number << endl;
+}
+```
+
+Tips:
+- Always using the unary scope resolution operator (::) to refer to global variables (even if there is no collision with a local-variable name) makes it clear that you're intending to access a global variable rather than a local variable.
+    - Always using the unary scope resolution operator (::) to refer to a global variable eliminates logic errors that might occur if a nonglobal variable hides the global variable.
+- Avoid using variables of the same name for different purposes in a program. Although this is allowed in various circumstances, it can lead to errors.
 
 ## Function Call Stack
 
@@ -369,3 +399,170 @@ void squareByReference(int& numberRef) {
    numberRef *= numberRef; // caller's argument modified
 }
 ```
+
+### References
+
+- References can also be used as aliases for other variables within a function.
+- Reference variables must be initialized in their declarations and cannot be reassigned as aliases to other variables.
+- Once a reference is declared as an alias for another variable, all operations supposedly performed on the alias are actually performed on the original variable.
+- To specify that a reference parameter should not be allowed to modify the corresponding argument, place the `const` qualifier before the type name in the parameter's declaration.
+- `string` objects can be large, so they should be passed to functions by reference.
+
+Functions can return references, but this can be dangerous.
+- When returning a reference to a variable declared in the called function, the variable should be declared static in that function.
+- Returning a reference to a local variable in a called function is a **logic error** for which compilers typically issue a warning.
+- Compilation warnings indicate potential problems, so most software-engineering teams have policies requiring code to compile without warnings.
+
+## Function Overloading
+
+- C++ enables several functions of the same name to be defined, as long as they have different signatures.
+- This is called **function overloading**.
+- The C++ compiler selects the proper function to call by examining the number, types and order of the arguments in the call.
+- Function overloading is used to create several functions of the same name that perform similar tasks, but on different data types.
+
+```c++
+// Overloaded square functions.
+#include <iostream>
+using namespace std;
+
+// function square for int values
+int square(int x) {
+   cout << "square of integer " << x << " is ";
+   return x * x;
+}
+
+// function square for double values
+double square(double y) {
+   cout << "square of double " << y << " is ";
+   return y * y;
+}
+
+int main() {
+   cout << square(7); // calls int version
+   cout << endl;
+   cout << square(7.5); // calls double version
+   cout << endl;
+}
+```
+
+Compiler differentiates among overloaded functions.
+- Overloaded functions are distinguished by their signatures.
+    - A signature is a combination of a function’s name and its parameter types (in order).
+- The compiler encodes each function identifier with the types of its parameters.
+
+
+## Function Templates
+
+- If the program logic and operations are identical for each data type, overloading may be performed more compactly and conveniently by using function templates.
+- You write a single function template definition.
+- Given the argument types provided in calls to this function, C++ automatically generates separate **function template specializations** to handle each type of call appropriately.
+- All function template definitions begin with the **template** keyword followed by a **template parameter list** enclosed in angle brackets (< and >).
+- Every parameter in the template parameter list is preceded by keyword typename or keyword class.
+- The type parameters are placeholders for fundamental types or user-defined types.
+    - Used to specify the types of the function’s parameters, to specify the function’s return type and to declare variables within the body of the function definition.
+
+```c++
+// Function template maximum header.
+template <typename T>  // or template<class T>
+T maximum(T value1, T value2, T value3) {
+   T maximumValue{value1}; // assume value1 is maximum
+
+   // determine whether value2 is greater than maximumValue
+   if (value2 > maximumValue) {
+      maximumValue = value2;
+   }
+
+   // determine whether value3 is greater than maximumValue
+   if (value3 > maximumValue) {
+      maximumValue = value3;
+   }
+
+   return maximumValue;
+}
+```
+
+
+
+## Recursion
+
+A **recursive function** is a function that calls itself, either directly, or indirectly (through another function).
+
+Recursive problem-solving approaches have a number of elements in common.
+- A recursive function is called to solve a problem.
+- The function actually knows how to solve only the simplest case(s), or so-called base case(s).
+- If the function is called with a base case, the function simply returns a result.
+- If the function is called with a more complex problem, it typically divides the problem into two conceptual pieces - a piece that the function knows how to do and a piece that it does not know how to do.
+- This new problem looks like the original, so the function calls a copy of itself to work on the smaller problem - this is referred to as a **recursive call** and is also called the **recursion step**.
+
+
+```c++
+// Recursive function factorial.
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+unsigned long factorial(unsigned long); // function prototype
+
+int main() {
+   // calculate the factorials of 0 through 10
+   for (unsigned int counter{0}; counter <= 10; ++counter) {
+      cout << setw(2) << counter << "! = " << factorial(counter)
+         << endl;
+   }
+}
+
+// recursive definition of function factorial
+unsigned long factorial(unsigned long number) {
+   if (number <= 1) { // test for base case
+      return 1; // base cases: 0! = 1 and 1! = 1
+   }
+   else { // recursion step
+      return number * factorial(number - 1);
+   }
+}
+
+// iterative method factorial
+unsigned long factorial(unsigned int number) {
+   unsigned long result{1};
+
+   // iterative factorial calculation
+   for (unsigned int i{number}; i >= 1; --i) {
+      result *= i;
+   }
+
+   return result;
+}
+```
+
+- The recursion step often includes the key-word return, because its result will be combined with the portion of the problem the function knew how to solve to form the result passed back to the original caller, possibly main.
+- The recursion step executes while the original call to the function is still "open", i.e., it has not yet finished executing.
+- The recursion step can result in many more such recursive calls.
+
+### Recursion vs Iteration
+
+Both iteration and recursion are based on a control statement:
+- Iteration uses an iteration statement
+- Recursion uses a selection statement.
+
+Both iteration and recursion involve iteration:
+- Iteration explicitly uses an iteration statement
+- Recursion achieves repetition through repeated function calls.
+
+Iteration and recursion each involve a termination test:
+- Iteration terminates when the loop-continuation condition fails
+- Recursion terminates when a base case is recognized.
+
+Counter-controlled iteration and recursion both gradually approach termination:
+- Iteration modifies a counter until the counter assumes a value that makes the loop-continuation condition fail
+- Recursion produces simpler versions of the original problem until the base case is reached.
+
+Both iteration and recursion can occur infinitely:
+- An infinite loop occurs with iteration if the loop-continuation test never becomes false
+- Infinite recursion occurs if the recursion step does not reduce the problem during each recursive call in a manner that converges on the base case.
+
+
+## Lab 3
+
+Write program to calculate a Fibonacci number. The sequence $F_n$ of Fibonacci numbers is defined by the recurrence relation:
+
+$$F_n = F_{n-1} + F_{n-2}$$
