@@ -160,6 +160,8 @@ Rules of Craps:
 - To win, continue rolling until you “make your point.”
 - You lose by rolling a 7 before making the point.
 
+[Lab 1 Solution](../progs/craps.cpp)
+
 ### Lab 2: Value of Pi
 
 Estimating the value of Pi using Monte Carlo:
