@@ -566,3 +566,5 @@ Both iteration and recursion can occur infinitely:
 Write program to calculate a Fibonacci number. The sequence \(F_n\) of Fibonacci numbers is defined by the recurrence relation:
 
 $$F_n = F_{n-1} + F_{n-2}$$
+
+[Lab 3 Solution](../progs/fib.cpp)
