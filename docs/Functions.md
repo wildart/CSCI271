@@ -568,3 +568,33 @@ Write program to calculate a Fibonacci number. The sequence \(F_n\) of Fibonacci
 $$F_n = F_{n-1} + F_{n-2}$$
 
 [Lab 3 Solution](../progs/fib.cpp)
+
+## Lab 4
+
+Write a recursive function `power(base, exponent)` that, when invoked, returns \(base^{exponent}\).
+
+For example, power(3, 4) = 3 * 3 * 3 * 3 . Assume that exponent is an integer greater than or equal to 1.
+
+Hint: The recursion step would use the relationship
+
+$$base^{exponent} = base \times base^{exponent - 1}$$
+
+and the terminating condition occurs when exponent is equal to 1 , because
+
+$$base^1 = base$$
+
+[Lab 4 Solution](../progs/power.cpp)
+
+
+## Lab 5
+
+The greatest common divisor (GCD) of two integers is the largest integer that evenly divides each of the numbers.
+- Write a function gcd that returns the greatest common divisor of two integers.
+- Write a recursive function `gcd` that returns the greatest common divisor of `x` and `y`, defined recursively as follows:
+
+        If y is equal to 0 , then gcd(x, y) is x ;
+        otherwise, gcd(x, y) is gcd(y, x % y)
+
+        Note: For this algorithm, `x` must be larger than `y`.
+
+[Lab 5 Solution](../progs/gcd.cpp)
