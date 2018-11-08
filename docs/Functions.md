@@ -571,7 +571,7 @@ $$F_n = F_{n-1} + F_{n-2}$$
 
 ## Lab 4
 
-Write a recursive function `power(base, exponent)` that, when invoked, returns \(base^{exponent}\).
+Write a recursive function `power(base, exponent)` that, when invoked, returns `base^exponent`.
 
 For example, power(3, 4) = 3 * 3 * 3 * 3 . Assume that exponent is an integer greater than or equal to 1.
 
