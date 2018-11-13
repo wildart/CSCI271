@@ -597,12 +597,15 @@ for each of the triangles shown below.
          2        5.0    12.0
          3        8.0    15.0
 
+[Lab 5 Solution](../progs/hypotenuse.cpp)
+
 ## Lab 6
 
 An integer is said to be prime if it’s divisible by only 1 and itself. For example, 2, 3, 5 and 7 are prime, but 4, 6, 8 and 9 are not.
 - Write a function that determines whether a number is prime.
 - Use this function in a program that determines and prints all the prime numbers between 2 and 10,000. How many of these numbers do you really have to test before being sure that you’ve found all the primes?
 
+[Lab 6 Solution](../progs/prime.cpp)
 
 ## Lab 7
 
