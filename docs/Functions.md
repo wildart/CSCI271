@@ -585,8 +585,26 @@ $$base^1 = base$$
 
 [Lab 4 Solution](../progs/power.cpp)
 
-
 ## Lab 5
+
+Write a program with a function hypotenuse that calculates the hypotenuse of a right triangle
+when the other two sides are given. The function should take two double arguments
+and return the hypotenuse as a `double`. Use this function in a program to determine the hypotenuse
+for each of the triangles shown below.
+
+         Triangle Side 1 Side 2
+         1        3.0    4.0
+         2        5.0    12.0
+         3        8.0    15.0
+
+## Lab 6
+
+An integer is said to be prime if it’s divisible by only 1 and itself. For example, 2, 3, 5 and 7 are prime, but 4, 6, 8 and 9 are not.
+- Write a function that determines whether a number is prime.
+- Use this function in a program that determines and prints all the prime numbers between 2 and 10,000. How many of these numbers do you really have to test before being sure that you’ve found all the primes?
+
+
+## Lab 7
 
 The greatest common divisor (GCD) of two integers is the largest integer that evenly divides each of the numbers.
 - Write a function gcd that returns the greatest common divisor of two integers.
@@ -597,4 +615,5 @@ The greatest common divisor (GCD) of two integers is the largest integer that ev
 
         Note: For this algorithm, `x` must be larger than `y`.
 
-[Lab 5 Solution](../progs/gcd.cpp)
+[Lab 7 Solution (Recursive)](../progs/gcdr.cpp)
+[Lab 7 Solution (Iterative)](../progs/gcd.cpp)
