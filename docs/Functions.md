@@ -609,6 +609,14 @@ An integer is said to be prime if it’s divisible by only 1 and itself. For exa
 
 ## Lab 7
 
+**Calculating Number of Minutes**: Write a function that takes the time as three integer arguments, days , hours, and minutes,
+and returns the number of minutes since the start of the current month, i.e., days=0 ; hours=0 and months=0;
+Use this function to calculate the amount of time in minutes between two times, both of which are within the same calendar month.
+
+[Lab 7 Solution](../progs/time.cpp)
+
+## Lab 8
+
 The greatest common divisor (GCD) of two integers is the largest integer that evenly divides each of the numbers.
 - Write a function gcd that returns the greatest common divisor of two integers.
 - Write a recursive function `gcd` that returns the greatest common divisor of `x` and `y`, defined recursively as follows:
@@ -618,5 +626,5 @@ The greatest common divisor (GCD) of two integers is the largest integer that ev
 
         Note: For this algorithm, `x` must be larger than `y`.
 
-[Lab 7 Solution (Recursive)](../progs/gcdr.cpp)
-[Lab 7 Solution (Iterative)](../progs/gcd.cpp)
+[Lab 8 Solution (Recursive)](../progs/gcdr.cpp)
+[Lab 8 Solution (Iterative)](../progs/gcd.cpp)
