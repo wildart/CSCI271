@@ -8,6 +8,7 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 - [Control Statements](docs/Control-Statements.md)
 - [Operators](docs/Operators.md)
 - [Functions](docs/Functions.md)
+- [Arrays & Vectors](docs/Arrays.md)
 
 ## Solutions
 
