@@ -15,6 +15,7 @@ Run notebooks: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/
 - [Assignment 1](progs/hw1.cpp)
 - [Assignment 2](progs/hw2.cpp)
 - [Assignment 3](progs/hw3.cpp)
+- [Assignment 4](progs/hw4.cpp)
 
 ## Lab instructions
 
